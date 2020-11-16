@@ -1,15 +1,17 @@
-# [telegram-support-bot](https://github.com/bostrot/telegram-support-bot)
-is a support bot for telegram bots, using the Telegraf framework (by [@dotcypress](https://github.com/dotcypress)). It let users create tickets which will be send to a staff group and can be answered by a reply.
 
-[![Bot API Version](https://img.shields.io/badge/Bot%20API-v3.1-f36caf.svg?style=flat-square)](https://core.telegram.org/bots/api)
+
+[![Bot API Version](https://img.shields.io/badge/Bot%20API-v4.8-f36caf.svg?style=flat-square)](https://core.telegram.org/bots/api)
 [![NPM Version](https://img.shields.io/npm/v/telegraf.svg?style=flat-square)](https://www.npmjs.com/)
 [![node](https://img.shields.io/node/v/telegraf.svg?style=flat-square)](https://www.npmjs.com/package/)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](http://standardjs.com/)
 
+# [Telegram Support Bot](https://github.com/bostrot/telegram-support-bot)
+is a support bot for telegram bots, using the Telegraf framework (by [@dotcypress](https://github.com/dotcypress)). It lets users create tickets which will be send to a staff group and can be answered by a reply.
+
 <table>
 <tr>
-<th><img src="https://puu.sh/wyvPd/8dde465527.jpg" /></th>
-<th><img src="https://puu.sh/wyvxD/35a3b70290.jpg" /></th>
+<th><img src="https://i.imgur.com/du5KZ1C.jpg" /></th>
+<th><img src="https://i.imgur.com/N2002b0.jpg" /></th>
 </tr>
 </table>
 
@@ -38,7 +40,6 @@ module.exports = {
     bot_token: "YOUR_BOT_TOKEN", // support bot token
     staffchat_id: "SUPERGROUP_CHAT_ID",  // telegram staff group chat id eg. -123456789
     owner_id: "YOUR_TELEGRAM_ID",
-    supported_bot: "service_name", // service name of the supported bot leave empty if you don't have one
     startCommandText: "Welcome in our support chat! Ask your question here.",
     faqCommandText: "Check out our FAQ here: Address to your FAQ",
 };
@@ -51,18 +52,37 @@ When a user sends a message to the support chat it will create a ticket which wi
 Currently the support chat offers these commands (staff commands):
 * `/open` - lists all open tickets (messages where noone has replied yet)
 * `/close` - close a ticket manually (in case someone writes 'thank you')
-* `/id (userid)` - lists some stuff from the database about the user
+* `/id` - returns your telegram id and the group chat id (1234567 -1234567890)
+* `/ban` - ban a person from writing to your chat
 
 User commands:
 * `/start` - tells the user how to use this bot
+* `/help` - an overview over the commands or some explanation for the user
 * `/faq` - shows the FAQ
 
-This you should only care about when you intend to "support" another bot e.g. salesbot with this. This would enable "ANTI-CRASH" and commands like start and stop. Remember to use this only when you have two bots.
+Features:
+* File forwarding from and to user
+* Database for handling open and closed tickets
+* Restrict users
+* Simple anti spam system
 
-Admin/Owner commands:
-* `/root` - Starts the listener and prevents the bot from crashing (restarts it and sends the log into the staff chat); Also this will open up a dashboard where the admin/owner can control the bot with following `Update`, `Restart`, `Log`, `Stop`.
+## Docker
 
-<img src="https://puu.sh/wywe5/a4c3cee0b7.png" width="400" height="400" />
+via docker-compose:
+```
+docker-compose up -d
+```
+
+or build:
+
+```
+docker build -t bostrot/telegram-support-bot .
+docker run bostrot/telegram-support-bot -v /path/to/config_dir:/telegram-support-bot/config
+```
+
+## Update to v1.0.1
+
+Backup and delete the database file (src/support.db) and move config.js to folder config. Then just start it normally.
 
 ## Telegram token
 
@@ -83,8 +103,4 @@ Also you can write to my own support bot: @bostrot_bot
 
 You are welcome to contribute with pull requests, bug reports, ideas and donations. Join the forum if you have any general purpose questions: [bostrot.com](https://www.bostrot.com)
 
-Bitcoin: [1ECPWeTCq93F68BmgYjUgGSV11XuzSPSeM](https://www.blockchain.com/btc/payment_request?address=1ECPWeTCq93F68BmgYjUgGSV11XuzSPSeM&currency=USD&nosavecurrency=true&message=Bostrot)
-
-PayPal: [paypal.me/bostrot](https://paypal.me/bostrot)
-
-Hosting: [Get $50 free VPS credit on Vultr](https://www.bostrot.com/?ref=hosting)
+Hit me up for a custom hosting solution or other help on Telegram [@bostrot_bot](http://t.me/bostrot_bot)

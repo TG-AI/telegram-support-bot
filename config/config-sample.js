@@ -3,7 +3,6 @@ module.exports = {
   bot_token: 'YOUR_BOT_TOKEN', // support bot token
   staffchat_id: 'SUPERGROUP_CHAT_ID', // eg. -123456789
   owner_id: 'YOUR_TELEGRAM_ID',
-  supported_bot: 'service_name', // service name of the supported bot
   spam_time: 5 * 60 * 1000, // time (in MS) in which user may send 5 messages
   port: process.env.PORT ||  3000,
   url: process.env.URL || 'https://{your_app_name}.herokuapp.com',
@@ -11,6 +10,7 @@ module.exports = {
   // customize your language
   startCommandText: 'Welcome in our support chat! Ask your question here.',
   faqCommandText: 'Check out our FAQ here: <a href="http://linktoyourfaq">linktoyourfaq.com</a>',
+  helpCommandText: '<b>Available commands:</b>\n/help\n/faq\n/id',
   lang_contactMessage:
     `Thank you for contacting us. We will answer as soon as possible.`,
   lang_blockedSpam:
