@@ -246,13 +246,7 @@ bot.catch((err) => {
   console.log('Error: ', err);
 });
 
-bot.startPolling();
-/*
-If you receive Error: 409: Conflict: can't use getUpdates method while
-webhook is active, comment bot.startPolling() out, remove // of the following
-commands, run your bot once and undo the changes. This will disable the
-webhook by setting it to empty.
+bot.telegram.setWebhook(url + ':' + port)
 
-bot.telegram.setWebhook("");
-bot.startWebhook("")
-*/
+// Http webhook
+bot.startWebhook('/secret-path', null, port)
