@@ -1,6 +1,6 @@
 module.exports = {
   // bot settings
-  bot_token: process.env.BOT_TOKEN, // support bot token
+  bot_token= new TelegramBot(process.env.BOT_TOKEN), // support bot token
   staffchat_id: process.env.SUPERGROUP_ID, // eg. -123456789
   owner_id: process.env.OWNER_ID,
   spam_time: 5 * 60 * 1000, // time (in MS) in which user may send 5 messages
