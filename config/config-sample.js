@@ -1,8 +1,8 @@
 module.exports = {
   // bot settings
-  bot_token: 'YOUR_BOT_TOKEN', // support bot token
-  staffchat_id: 'SUPERGROUP_CHAT_ID', // eg. -123456789
-  owner_id: 'YOUR_TELEGRAM_ID',
+  bot_token: process.env.BOT_TOKEN, // support bot token
+  staffchat_id: process.env.SUPERGROUP_ID, // eg. -123456789
+  owner_id: process.env.OWNER_ID,
   spam_time: 5 * 60 * 1000, // time (in MS) in which user may send 5 messages
   port: process.env.PORT ||  3000,
   url: process.env.URL || 'https://{your_app_name}.herokuapp.com',
